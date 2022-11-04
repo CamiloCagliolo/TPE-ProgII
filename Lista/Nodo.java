@@ -22,7 +22,7 @@ class Nodo {
     }
 
     public void deleteElemento(Object o){
-        if(this.siguiente.getValor().equals(o)){
+        if(this.siguiente != null && this.siguiente.getValor().equals(o)){
             this.siguiente = this.siguiente.getSiguiente();
         }
         if(this.siguiente != null) {
@@ -31,19 +31,24 @@ class Nodo {
     }
 
     public int buscarPosicion(Object o, int indice){
-        if(this.siguiente.getValor().equals(o)){
+        if(this.siguiente != null && this.siguiente.getValor().equals(o)){
             return indice;
         }
         indice++;
-        return this.siguiente.buscarPosicion(o, indice);
+        if(this.siguiente != null) {
+            return this.siguiente.buscarPosicion(o, indice);
+        }
+        return -1;
     }
 
     public Object verSiSiguienteTiene(int indice, int iteracion){
         if(indice == iteracion){
             return this.siguiente.getValor();
         }
-        iteracion++;
-        return this.siguiente.verSiSiguienteTiene(indice, iteracion);
+        iteracion++;if(this.siguiente != null) {
+            return this.siguiente.verSiSiguienteTiene(indice, iteracion);
+        }
+        return null;
     }
 
     public int calcularLength(int iteracion){
@@ -71,5 +76,14 @@ class Nodo {
             return new Nodo(this.siguiente);
         }
         return null;
+    }
+
+    public String construirSalida(int iteracion){
+        if(this.siguiente != null){
+            String str = ", [" + iteracion + "]=> " + this.siguiente.getValor().toString();
+            iteracion++;
+            return str + this.siguiente.construirSalida(iteracion);
+        }
+        return ")";
     }
 }

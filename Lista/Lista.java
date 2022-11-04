@@ -24,8 +24,8 @@ public class Lista {
             return this.primero.getValor();
         }
         int iteracion = 1;
-        return this.primero.verSiSiguienteTiene(indice, iteracion);
-    }
+        return this.primero.verSiSiguienteTiene(indice, iteracion);     //Como el primer nodo no tiene el objeto, lo llama
+    }                                                                   // para preguntarle si el que viene después tiene el objeto.
 
     public void deleteNodo(int indice){
         if(indice == 0){
@@ -49,5 +49,14 @@ public class Lista {
         }
         int indice = 1;
         return this.primero.buscarPosicion(o, indice);
+    }
+
+    @Override
+    public String toString(){
+        int iteracion = 1;
+        if(this.primero != null){
+            return "([0]=> " + this.primero.getValor().toString() + this.primero.construirSalida(iteracion);
+        }
+        return "[]";
     }
 }
