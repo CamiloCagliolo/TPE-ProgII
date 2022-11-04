@@ -12,12 +12,19 @@ public class Lista {
         this.primero.setSiguiente(n);
     }
 
+    public int length(){
+        if(this.primero == null){
+            return 0;
+        }
+        int iteracion = 1;
+        return this.primero.calcularLength(iteracion);
+    }
     public Object get(int indice){
         if(indice == 0){
             return this.primero.getValor();
         }
         int iteracion = 1;
-        return this.primero.checkNext(indice, iteracion);
+        return this.primero.verSiSiguienteTiene(indice, iteracion);
     }
 
     public void deleteNodo(int indice){
@@ -36,8 +43,8 @@ public class Lista {
         this.primero.deleteElemento(o);
     }
 
-    public int buscarPosicion(Object o){
-        if(this.primero.getValor().equals(o)){
+    public int buscarPosicion(Object o) {
+        if (this.primero.getValor().equals(o)) {
             return 0;
         }
         int indice = 1;

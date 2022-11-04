@@ -38,12 +38,20 @@ class Nodo {
         return this.siguiente.buscarPosicion(o, indice);
     }
 
-    public Object checkNext(int indice, int iteracion){
+    public Object verSiSiguienteTiene(int indice, int iteracion){
         if(indice == iteracion){
             return this.siguiente.getValor();
         }
         iteracion++;
-        return this.siguiente.checkNext(indice, iteracion);
+        return this.siguiente.verSiSiguienteTiene(indice, iteracion);
+    }
+
+    public int calcularLength(int iteracion){
+        if(this.siguiente == null){
+            return iteracion;
+        }
+        iteracion++;
+        return this.siguiente.calcularLength(iteracion);
     }
 
     public void setSiguiente(Nodo n){
