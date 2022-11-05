@@ -36,5 +36,11 @@ public class Main {
 
         System.out.println("Le pido a la lista el objeto en la posición " + pos);
         System.out.println("El objeto en esa posición es: " + lista.get(pos));
+
+        System.out.println("Borro el objeto en la posición " + pos);
+        lista.deleteNodo(pos);
+        System.out.println(lista);
+
+     
     }
 }
