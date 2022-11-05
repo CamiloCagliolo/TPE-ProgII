@@ -1,62 +1,57 @@
 package TPE.Lista;
+import java.util.Comparator;
 
-public class Lista {
-    private Nodo primero;
+public class Lista extends ElementoLista{
+    private Comparator comparador;
 
-    public void addNodo(Object o){
-        Nodo n = new Nodo(o);
-        if(primero == null) {
-            this.primero = n;
-            return;
-        }
-        this.primero.setSiguiente(n);
+    public Lista(Comparator c){
+        this.comparador = c;
     }
 
-    public int length(){
-        if(this.primero == null){
-            return 0;
-        }
-        int iteracion = 1;
-        return this.primero.calcularLength(iteracion);
-    }
-    public Object get(int indice){
-        if(indice == 0){
-            return this.primero.getValor();
-        }
-        int iteracion = 1;
-        return this.primero.verSiSiguienteTiene(indice, iteracion);     //Como el primer nodo no tiene el objeto, lo llama
-    }                                                                   // para preguntarle si el que viene después tiene el objeto.
+    public void setComparador(Comparator c){
+        this.comparador = c;
 
-    public void deleteNodo(int indice){
-        if(indice == 0){
-            this.primero = this.primero.getSiguiente();
-            return;
+        for(int i = 0; i < this.length(); i++){
+            this.sort(c);
         }
-        int iteracion = 1;
-        this.primero.deleteSiguiente(indice, iteracion);
-    }
-
-    public void deleteElemento(Object o){
-        if(this.primero.getValor().equals(o)){
-            this.primero = this.primero.getSiguiente();
-        }
-        this.primero.deleteElemento(o);
-    }
-
-    public int buscarPosicion(Object o) {
-        if (this.primero.getValor().equals(o)) {
-            return 0;
-        }
-        int indice = 1;
-        return this.primero.buscarPosicion(o, indice);
     }
 
     @Override
     public String toString(){
         int iteracion = 1;
-        if(this.primero != null){
-            return "([0]=> " + this.primero.getValor().toString() + this.primero.construirSalida(iteracion);
+        if(this.nodo != null){
+            return "([0]=> " + this.nodo.getValor().toString() + this.nodo.construirSalida(iteracion);
         }
-        return "[]";
+        return "()";
     }
+
+    public void add(Object o){
+        Nodo n = new Nodo(o);
+        super.checkOrden(n,this.comparador);
+    }
+
+    public int length(){
+        int iteracion = 0;
+        return super.length(iteracion);
+    }
+
+    public Object get(int indice){
+        int iteracion = 0;
+        return super.verSiSiguienteTiene(indice, iteracion);
+    }
+
+    public void deleteNodo(int indice){
+        int iteracion = 0;
+        super.deleteNodo(indice, iteracion);
+    }
+
+    public void deleteElemento(Object o){
+        super.deleteElemento(o);
+    }
+
+    public int buscarPosicion(Object o) {
+        int indice = 0;
+        return super.buscarPosicion(o, indice);
+    }
+
 }

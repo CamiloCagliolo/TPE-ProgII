@@ -1,26 +1,40 @@
 package TPE.Main;
 import TPE.Lista.Lista;
+import java.util.Comparator;
 
 public class Main {
 
     public static void main(String[] args){
-        Lista lista = new Lista();
+        Lista lista = new Lista(new ComparadorStringMayorAMenor());
 
-        for(int i = 0; i < 15; i++){
-            lista.addNodo("Objeto " + i);
+        for(int i = 0; i < 9; i++){
+            lista.add("Objeto " + i);
         }
-        System.out.println("Lista original: ");
+
+        System.out.println("Lista original según el comparador que le di: ");
         System.out.println(lista);
 
-        System.out.println("Borro el nodo en el lugar 6: ");
-        lista.deleteNodo(6);
+        System.out.println("Agrego Objeto 26 a la lista: ");
+        lista.add("Objeto " + 26);
         System.out.println(lista);
 
-        System.out.println("Busco la posición del string Objeto 7");
-        System.out.println("Posición: " + lista.buscarPosicion("Objeto 7"));
-
-        System.out.println("Borro al Objeto 7 con deleteElemento()");
-        lista.deleteElemento("Objeto 7");
+        System.out.println("Pongo un comparador nuevo: ");
+        lista.setComparador(new ComparadorString());
         System.out.println(lista);
+
+        System.out.println("Agrego Objeto 6: ");
+        lista.add("Objeto " + 6);
+        System.out.println(lista);
+
+        System.out.println("Elimino los Objeto 6: ");
+        lista.deleteElemento("Objeto 6");
+        System.out.println(lista);
+
+        System.out.println("Busco la posición del Objeto 8.");
+        int pos = lista.buscarPosicion("Objeto 8");
+        System.out.println("Posición del Objeto 8: " + pos);
+
+        System.out.println("Le pido a la lista el objeto en la posición " + pos);
+        System.out.println("El objeto en esa posición es: " + lista.get(pos));
     }
 }
