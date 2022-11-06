@@ -24,7 +24,7 @@ class Nodo extends ElementoLista{
 
     public String construirSalida(int iteracion){
         if(this.nodo != null){
-            String str = ", [" + iteracion + "]=> " + this.nodo.getValor().toString();
+            String str = "; [" + iteracion + "]=> " + this.nodo.getValor().toString();
             return str + this.nodo.construirSalida(iteracion+1);
         }
         return ")";
