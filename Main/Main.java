@@ -1,11 +1,13 @@
 package TPE.Main;
 import TPE.Lista.Lista;
+import TPE.Lista.NodoComparable;
+
 import java.util.Comparator;
 
 public class Main {
 
     public static void main(String[] args){
-        Lista lista = new Lista(new ComparadorStringMayorAMenor());
+      /*  Lista lista = new Lista(new ComparadorStringMayorAMenor());
 
         for(int i = 0; i < 9; i++){
             lista.add("Objeto " + i);
@@ -39,8 +41,27 @@ public class Main {
 
         System.out.println("Borro el objeto en la posición " + pos);
         lista.deleteNodo(pos);
-        System.out.println(lista);
+        System.out.println(lista);*/
 
-     
+        Lista l1 = new Lista();
+        System.out.println(l1);
+
+        l1.add(3);
+        l1.add(21);
+        l1.add(22);
+        l1.add(11);
+        l1.add(4);
+        l1.add(5);
+        l1.add(48);
+        l1.add(101);
+        l1.add(2);
+        l1.add(0);
+        System.out.println(l1);
+
+        l1.setComparador(new ComparadorNumerosMayorAMenor());
+        System.out.println(l1);
+
+        l1.setComparador(null);
+        System.out.println(l1);
     }
 }
