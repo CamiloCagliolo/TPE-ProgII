@@ -83,4 +83,8 @@ public class Lista extends ElementoLista{
         return buscarPosicion(o, indice);
     }
 
+    public Comparator getComparador(){
+        return this.comparador;
+    }
+
 }

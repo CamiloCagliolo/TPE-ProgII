@@ -2,11 +2,11 @@ package TPE.Alumno;
 import TPE.Lista.Lista;
 
 public class Alumno {
-    private String nombre;
-    private String apellido;
-    private int dni;
-    private int edad;
-    private Lista intereses;
+    protected String nombre;
+    protected String apellido;
+    protected int dni;
+    protected int edad;
+    protected Lista intereses;
 
     public Alumno(String n, String a, int dni, int e){
         nombre = n;
