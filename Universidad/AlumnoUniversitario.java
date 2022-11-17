@@ -10,4 +10,9 @@ public class AlumnoUniversitario extends Alumno implements EntidadUniversitaria{
     public int getCantidadAlumnos(){
         return 1;
     }
+
+    @Override
+    public String toString(){
+        return this.getNombre() + " " + this.getApellido();
+    }
 }

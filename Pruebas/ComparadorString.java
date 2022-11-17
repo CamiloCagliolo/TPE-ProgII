@@ -1,4 +1,4 @@
-package TPE.Main;
+package TPE.Pruebas;
 
 import java.util.Comparator;
 

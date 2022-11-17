@@ -13,6 +13,7 @@ public class Alumno {
         apellido = a;
         this.dni = dni;
         edad = e;
+        intereses = new Lista();
     }
 
     public String getNombre() {
@@ -38,6 +39,10 @@ public class Alumno {
         }
     }
 
+    public void addInteres(String s){
+        intereses.add(s);
+    }
+
     public Lista getIntereses(){
         Lista aux = new Lista();
         for(int i = 0; i < this.intereses.length(); i++){
@@ -48,11 +53,12 @@ public class Alumno {
 
     public String toString(){
         if(this.intereses != null){
-            return "Alumno: " + this.nombre + " " + this.apellido + " DNI: " + this.dni + " Edad: " + this.edad + " Intereses: " + this.intereses.toString();
+            return "(Alumno: " + this.nombre + " " + this.apellido + " DNI: " + this.dni + " Edad: " + this.edad + " Intereses: " + this.intereses.toString()+")";
         }
         else{
-            return "Alumno: " + this.nombre + " " + this.apellido + ", DNI: " + this.dni + ", Edad: " + this.edad + ". Sin intereses.";
+            return "(Alumno: " + this.nombre + " " + this.apellido + ", DNI: " + this.dni + ", Edad: " + this.edad + ". Sin intereses.)";
         }
-
     }
+
+
 }
