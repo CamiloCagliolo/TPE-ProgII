@@ -1,8 +1,9 @@
 package TPE.Lista;
 
 import java.util.Comparator;
+import java.util.Iterator;
 
-public class VinculatedList<T>{
+public class VinculatedList<T> implements Iterable<T>{
     private Node<T> first;
     private Comparator<T> c;
 
@@ -23,9 +24,7 @@ public class VinculatedList<T>{
             first = n;
             return;
         }
-
         IteratorHelper<T> it = new IteratorHelper<>(first);
-
         while(it.hasNext()){
             /*Compara el valor del objeto que se intenta añadir y el del valor del siguiente nodo. Si es mayor, avanza. Si es menor, entonces lo acomoda en ese lugar.*/
             if(c.compare(ob, it.getPointer().getNext().getValue()) > 0){
@@ -38,10 +37,48 @@ public class VinculatedList<T>{
                 return;
             }
         }
-
         /*Si llegó hasta el final, lo coloca en el final.*/
         Node<T> pointed = it.getPointer();
         pointed.setNext(n);
+    }
+
+    public void deleteByPosition(int index){
+        IteratorHelper<T> it = new IteratorHelper<>(first);
+        if(index == 0){
+            Node<T> next = first.getNext();
+            first = next;
+            return;
+        }
+        int aux = 0;
+        while(it.hasNext()){
+            if(aux + 1 == index){
+                Node<T> newNext = it.getPointer().getNext().getNext();
+                it.getPointer().setNext(newNext);
+                return;
+            }
+            else{
+                it.next();
+                aux++;
+            }
+        }
+    }
+
+    public void delete(T ob){
+        IteratorHelper<T> it = new IteratorHelper<>(first);
+        Node<T> aux;
+        if(first.getValue().equals(ob)){
+            aux = first.getNext();
+            first = aux;
+        }
+        while(it.hasNext()){
+            if(it.getPointer().getNext() != null && it.getPointer().getNext().getValue().equals(ob)){
+                aux = it.getPointer().getNext().getNext();
+                it.getPointer().setNext(aux);
+            }
+            else{
+                it.next();
+            }
+        }
     }
 
     public T get(int index){
@@ -75,6 +112,15 @@ public class VinculatedList<T>{
         return -1;
     }
 
+    public void setNewComparator(Comparator c){
+        this.c = c;
+        IteratorHelper<T> it = new IteratorHelper<>(first);
+        first = null;
+        while(it.hasNext()){
+            add(it.next());
+        }
+    }
+
     public int size(){
         int aux = 0;
         IteratorHelper<T> it = new IteratorHelper<>(first);
@@ -99,5 +145,10 @@ public class VinculatedList<T>{
         }
         aux += ")";
         return aux;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new IteratorHelper(first);
     }
 }
