@@ -27,7 +27,7 @@ public class VinculatedList<T> implements Iterable<T>{
         IteratorHelper<T> it = new IteratorHelper<>(first);
         while(it.hasNext()){
             /*Compara el valor del objeto que se intenta añadir y el del valor del siguiente nodo. Si es mayor, avanza. Si es menor, entonces lo acomoda en ese lugar.*/
-            if(c.compare(ob, it.getPointer().getNext().getValue()) > 0){
+            if(it.getPointer().getNext() != null && c.compare(ob, it.getPointer().getNext().getValue()) > 0){
                 it.next();
             }
             else{

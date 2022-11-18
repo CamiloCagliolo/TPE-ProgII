@@ -1,4 +1,5 @@
 package TPE.Alumno;
+import TPE.Comparadores.ComparadorStrings;
 import TPE.Lista.VinculatedList;
 
 public class Alumno {

@@ -1,4 +1,4 @@
-package TPE.Alumno;
+package TPE.Comparadores;
 
 import java.util.Comparator;
 
