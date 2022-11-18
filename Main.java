@@ -1,2 +1,8 @@
-package TPE;public class Main {
+package TPE;
+
+public class Main {
+
+    public static void main(String[] args){
+
+    }
 }
